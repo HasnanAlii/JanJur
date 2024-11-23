@@ -1,0 +1,19 @@
+import 'package:flutter/material.dart';
+import 'package:tubes_janjur/screens/homescreen.dart';
+import 'package:tubes_janjur/screens/splashscreen.dart';
+
+void main() {
+  runApp(TravelApp());
+}
+
+class TravelApp extends StatelessWidget {
+  const TravelApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Splashscreen(),
+    );
+  }
+}
