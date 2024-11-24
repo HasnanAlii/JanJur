@@ -12,13 +12,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedNavbar = 0;
+  // int _selectedNavbar = 0;
 
-  void _changeSelectedNavBar(int index) {
-    setState(() {
-      _selectedNavbar = index;
-    });
-  }
+  // void _changeSelectedNavBar(int index) {
+  //   setState(() {
+  //     _selectedNavbar = index;
+  //   });
+  // }
 
   List<Kuliner> popular =
       listKuliner.where((element) => element.category == 'popular').toList();
@@ -30,10 +30,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kBackgroundColor,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70),
+        child: buildAppBar(),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            buildAppBar(),
+            // buildAppBar(),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -124,104 +128,93 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home_filled,
-              size: 30,
-              color: _selectedNavbar == 0
-                  ? Color.fromARGB(255, 240, 94, 10)
-                  : Color.fromARGB(255, 37, 37, 37),
-            ),
-            label: 'Utama',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search_rounded,
-              size: 30,
-              color: _selectedNavbar == 1
-                  ? Color.fromARGB(255, 240, 94, 10)
-                  : Color.fromARGB(255, 37, 37, 37),
-            ),
-            label: 'Cari',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.star,
-              size: 30,
-              color: _selectedNavbar == 2
-                  ? Color.fromARGB(255, 240, 94, 10)
-                  : Color.fromARGB(255, 37, 37, 37),
-            ),
-            label: 'Favorit',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person_3_sharp,
-              size: 30,
-              color: _selectedNavbar == 3
-                  ? Color.fromARGB(255, 240, 94, 10)
-                  : Color.fromARGB(255, 37, 37, 37),
-            ),
-            label: 'Profil',
-          ),
-        ],
-        currentIndex: _selectedNavbar,
-        selectedItemColor: Colors.orange,
-        unselectedItemColor: Colors.grey,
-        showUnselectedLabels: true,
-        onTap: _changeSelectedNavBar,
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: <BottomNavigationBarItem>[
+      //     BottomNavigationBarItem(
+      //       icon: Icon(
+      //         Icons.home_filled,
+      //         size: 30,
+      //         color: _selectedNavbar == 0
+      //             ? Color.fromARGB(255, 240, 94, 10)
+      //             : Color.fromARGB(255, 37, 37, 37),
+      //       ),
+      //       label: 'Utama',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(
+      //         Icons.search_rounded,
+      //         size: 30,
+      //         color: _selectedNavbar == 1
+      //             ? Color.fromARGB(255, 240, 94, 10)
+      //             : Color.fromARGB(255, 37, 37, 37),
+      //       ),
+      //       label: 'Cari',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(
+      //         Icons.star,
+      //         size: 30,
+      //         color: _selectedNavbar == 2
+      //             ? Color.fromARGB(255, 240, 94, 10)
+      //             : Color.fromARGB(255, 37, 37, 37),
+      //       ),
+      //       label: 'Favorit',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(
+      //         Icons.person_3_sharp,
+      //         size: 30,
+      //         color: _selectedNavbar == 3
+      //             ? Color.fromARGB(255, 240, 94, 10)
+      //             : Color.fromARGB(255, 37, 37, 37),
+      //       ),
+      //       label: 'Profil',
+      //     ),
+      //   ],
+      //   currentIndex: _selectedNavbar,
+      //   selectedItemColor: Colors.orange,
+      //   unselectedItemColor: Colors.grey,
+      //   showUnselectedLabels: true,
+      //   onTap: _changeSelectedNavBar,
+      // ),
     );
   }
 }
 
 Widget buildAppBar() {
-  return Container(
-    height: 70,
-    decoration: BoxDecoration(
-      color: Color.fromARGB(255, 240, 94, 10),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.4),
-          spreadRadius: 5,
-          blurRadius: 10,
-          offset: Offset(0, 5),
-        ),
-      ],
-    ),
-    child: SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Janjur',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.white,
+  return AppBar(
+    toolbarHeight: 70, // Set the height of the app bar
+    backgroundColor: Color.fromARGB(255, 240, 94, 10),
+    elevation: 5,
+    shadowColor: Colors.grey.withOpacity(0.4), // Shadow effect
+    title: Padding(
+      padding: const EdgeInsets.only(left: 5, right: 0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            'Janjur',
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+            ),
+          ),
+          Row(
+            children: [
+              // buildSearchButton(),
+              SizedBox(width: 10),
+              IconButton(
+                icon: Icon(Icons.shopping_cart, size: 28, color: Colors.white),
+                onPressed: () {},
               ),
-            ),
-            Row(
-              children: [
-                buildSearchButton(),
-                SizedBox(width: 15),
-                IconButton(
-                  icon:
-                      Icon(Icons.shopping_cart, size: 28, color: Colors.white),
-                  onPressed: () {},
-                ),
-                SizedBox(width: 15),
-                IconButton(
-                  icon: Icon(Icons.chat, size: 28, color: Colors.white),
-                  onPressed: () {},
-                ),
-              ],
-            ),
-          ],
-        ),
+              SizedBox(width: 10),
+              IconButton(
+                icon: Icon(Icons.chat, size: 28, color: Colors.white),
+                onPressed: () {},
+              ),
+            ],
+          ),
+        ],
       ),
     ),
   );
@@ -229,16 +222,16 @@ Widget buildAppBar() {
 
 Widget buildSearchButton() {
   return Container(
-    width: 190,
+    width: 340,
     height: 43,
-    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+    padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(6),
     ),
     child: TextField(
       decoration: InputDecoration(
-        hintText: 'Cari Makanan',
+        hintText: 'JanJur',
         hintStyle: TextStyle(
           color: Color.fromARGB(255, 240, 94, 10),
           fontSize: 15,

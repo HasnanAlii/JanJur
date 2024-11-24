@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tubes_janjur/models/kuliner_model.dart';
 
 class RekomendasiKulinerGrid extends StatelessWidget {
-  final List<Kuliner> makananList; // Daftar makanan yang akan ditampilkan
+  final List<Kuliner> makananList;
   const RekomendasiKulinerGrid({super.key, required this.makananList});
 
   @override
@@ -10,10 +10,10 @@ class RekomendasiKulinerGrid extends StatelessWidget {
     return GridView.builder(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2, // Jumlah kolom per baris (2 kolom)
-        mainAxisSpacing: 10, // Jarak antar baris
-        crossAxisSpacing: 10, // Jarak antar kolom
-        childAspectRatio: 3 / 4, // Rasio aspek kotak (lebar/tinggi)
+        crossAxisCount: 2,
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 10,
+        childAspectRatio: 3 / 4,
       ),
       itemCount: makananList.length,
       itemBuilder: (context, index) {

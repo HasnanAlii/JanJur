@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:tubes_janjur/screens/homescreen.dart';
+import 'package:tubes_janjur/screens/nav.dart';
 import 'package:tubes_janjur/utils/cost.dart';
 
 class Splashscreen extends StatefulWidget {
@@ -18,7 +18,7 @@ class _SplashscreenState extends State<Splashscreen> {
 //menunda 3 detik
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+          context, MaterialPageRoute(builder: (context) => NavBar()));
     });
   }
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tubes_janjur/models/kuliner_model.dart';
 
-class PopularKuliner extends StatelessWidget {
-  final Kuliner makanan;
-  const PopularKuliner({super.key, required this.makanan});
+class FavoriteKuliner extends StatelessWidget {
+  final Kuliner favorite;
+  const FavoriteKuliner({super.key, required this.favorite});
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +27,16 @@ class PopularKuliner extends StatelessWidget {
           ),
         ),
         ClipRRect(
+          borderRadius: BorderRadius.circular(15),
           child: Container(
             height: 250,
             width: MediaQuery.of(context).size.width * 1,
             decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: NetworkImage(
-                  makanan.image![0],
+                  favorite.image![0],
                 ),
               ),
             ),
@@ -42,7 +44,7 @@ class PopularKuliner extends StatelessWidget {
               children: [
                 const Spacer(),
                 Container(
-                  color: Colors.grey.withOpacity(0.2),
+                  color: Colors.black.withOpacity(0.8),
                   child: Padding(
                     padding: const EdgeInsets.all(12),
                     child: Row(
@@ -53,12 +55,32 @@ class PopularKuliner extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              makanan.name,
+                              favorite.name,
                               style: const TextStyle(
                                   fontSize: 16,
                                   color: Colors.white,
                                   fontWeight: FontWeight.w500,
                                   fontFamily: "NunitoSans"),
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const Icon(
+                                  Icons.location_on_outlined,
+                                  color: Colors.white,
+                                  size: 16,
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  favorite.location,
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                      fontFamily: "NunitoSans"),
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -74,7 +96,7 @@ class PopularKuliner extends StatelessWidget {
                               width: 5,
                             ),
                             Text(
-                              makanan.rate.toString(),
+                              favorite.rate.toString(),
                               style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
