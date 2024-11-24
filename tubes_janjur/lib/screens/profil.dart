@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tubes_janjur/utils/cost.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -6,9 +7,9 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: kBackgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: kBackgroundColor,
         elevation: 0,
         centerTitle: true,
         title: const Text(
@@ -25,7 +26,7 @@ class ProfileScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 20),
+            const SizedBox(height: 60),
             // Foto Profil
             CircleAvatar(
               radius: 50,

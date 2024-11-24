@@ -16,7 +16,7 @@ class _SplashscreenState extends State<Splashscreen> {
     super.initState();
 
 //menunda 3 detik
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => NavBar()));
     });
